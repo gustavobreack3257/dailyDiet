@@ -1,6 +1,5 @@
 import * as S from "./styles";
 
-
 export function BoxDiet() {
   return (
     <S.Container>

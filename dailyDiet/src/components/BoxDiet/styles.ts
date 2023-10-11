@@ -1,6 +1,6 @@
-import { TouchableOpacity } from 'react-native';
-import styled, { css } from 'styled-components/native'
-import {ArrowUpRight} from 'phosphor-react-native'
+import { TouchableOpacity } from "react-native";
+import styled, { css } from "styled-components/native";
+import { ArrowUpRight } from "phosphor-react-native";
 
 export const Container = styled.View`
   flex-direction: row;
@@ -12,7 +12,7 @@ export const Container = styled.View`
   margin-bottom: 40px;
   border-radius: 8px;
 
-  background-color: ${({theme}) => theme.COLORS.GREEN_LIGHT};
+  background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
 `;
 export const ContainerTitle = styled.View`
   flex: 1;
@@ -26,19 +26,18 @@ export const ContainerIcon = styled(TouchableOpacity)`
 `;
 
 export const Title = styled.Text`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.BG}px;
   `}
 `;
 export const SubTitle = styled.Text`
-
-  ${({theme}) => css`
+  ${({ theme }) => css`
     font-family: ${theme.FONT_FAMILY.REGULAR};
     font-size: ${theme.FONT_SIZE.SM}px;
   `}
 `;
-export const Icon = styled(ArrowUpRight).attrs(({theme}) => ({
+export const Icon = styled(ArrowUpRight).attrs(({ theme }) => ({
   size: theme.FONT_SIZE.XL,
-  color: theme.COLORS.GREEN_DARK
+  color: theme.COLORS.GREEN_DARK,
 }))``;

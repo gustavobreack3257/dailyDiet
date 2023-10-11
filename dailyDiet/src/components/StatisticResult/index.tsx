@@ -4,7 +4,7 @@ type Props = {
   title: string;
   subTitle: string;
 };
-export function StatBox({ title, subTitle }: Props) {
+export function StatisticResult({ title, subTitle }: Props) {
   return (
     <S.Container>
       <S.ContainerTitle>

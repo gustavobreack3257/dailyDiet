@@ -9,7 +9,6 @@ export const Container = styled.View`
   height: 200px;
   width: 100%;
 
-
   background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
 `;
 export const ContainerIcon = styled.View`
@@ -19,7 +18,6 @@ export const ContainerIcon = styled.View`
 
   height: 100%;
   width: 32px;
-
 `;
 export const ContainerTitle = styled.View`
   flex-direction: column;
@@ -28,25 +26,23 @@ export const ContainerTitle = styled.View`
 
   height: 48px;
   width: 60%;
-
 `;
 
 export const Title = styled.Text`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     font-size: ${theme.FONT_SIZE.BG}px;
     font-family: ${theme.FONT_FAMILY.BOLD};
     color: ${theme.COLORS.GRAY_100};
   `}
 `;
 export const SubTitle = styled.Text`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     font-size: ${theme.FONT_SIZE.MD}px;
     font-family: ${theme.FONT_FAMILY.REGULAR};
     color: ${theme.COLORS.GRAY_100};
   `}
 `;
 export const Icon = styled(ArrowLeft).attrs(({ theme }) => ({
-    size: theme.FONT_SIZE.EG,
-    color: theme.COLORS.GREEN_DARK,
-  }))``;
-
+  size: theme.FONT_SIZE.EG,
+  color: theme.COLORS.GREEN_DARK,
+}))``;

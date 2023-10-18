@@ -1,12 +1,15 @@
 import React from 'react'
 import { Home } from '@screens/Home'
 import { Details } from '@screens/Details'
+import { MealAdd } from '@screens/MealAdd'
 
 import {
   useFonts,
   NunitoSans_400Regular,
   NunitoSans_700Bold
 } from '@expo-google-fonts/nunito-sans'
+import { StatusBar } from 'react-native'
+
 import { Theme } from '@styles/theme'
 import { ThemeProvider } from 'styled-components'
 
@@ -15,7 +18,11 @@ export default function App() {
 
   return (
     <ThemeProvider theme={Theme}>
-      {fontsLoaded ? <Details />: []}
+      {fontsLoaded ? <MealAdd />: []}
+
+      <StatusBar barStyle={'dark-content'}
+      translucent
+      backgroundColor='transparent'/>
     </ThemeProvider>
   )
 }

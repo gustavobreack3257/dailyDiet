@@ -1,43 +1,33 @@
-import { ArrowLeft } from "phosphor-react-native";
-import { SafeAreaView } from "react-native";
-import { css } from "styled-components/native";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
   flex: 1;
 
-  background-color: ${({ theme }) => theme.COLORS.GREEN_MID};
+  background-color: ${({theme}) => theme.COLORS.GRAY_500};
 `;
 export const ContainerBody = styled.View`
-  flex: 1;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-
+  height: 90%;
+  padding: 16px 24px;
   border-top-right-radius: 24px;
-  border-top-left-radius: 24px;
+  border-top-left-radius:24px;
 
-  width: 100%;
-  padding-top: 32px;
-  margin-top: -8px;
-
-  background-color: ${({ theme }) => theme.COLORS.GRAY_700};
+  background-color: ${({theme}) => theme.COLORS.GRAY_700};
 `;
-export const ContainerElements = styled.View`
-  height: 62%;
-  width: 100%;
-  padding: 24px;
-`;
-export const ContainerStatistic = styled.View`
-  justify-content: space-between;
+export const ContainerInputData = styled.View`
   flex-direction: row;
-  height: 104px;
+  justify-content: space-between;
+
+  height: 48px;
   width: 100%;
+  margin-top: 24px;
+  margin-bottom: 24px;
 `;
-export const Describe = styled.Text`
-  ${({ theme }) => css`
-    font-family: ${theme.FONT_FAMILY.BOLD};
-    font-size: ${theme.FONT_SIZE.MD}px;
-    color: ${theme.COLORS.GRAY_100};
-  `}
+export const ContainerSelectData = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+
+  height: 72px;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 136px;
 `;

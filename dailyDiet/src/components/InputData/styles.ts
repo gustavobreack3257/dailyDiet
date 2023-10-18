@@ -4,8 +4,15 @@ import styled, { css } from "styled-components/native";
 export const Container = styled.View`
     flex-direction: column;
 
-    height: 48px;
-    width: 100%;
+    height: 72px;
+    width: 152px;
+`;
+export const Title = styled.Text`
+  ${({ theme }) => css`
+    font-size: ${theme.FONT_SIZE.MD}px;
+    font-family: ${theme.FONT_FAMILY.BOLD};
+    color: ${theme.COLORS.GRAY_200};
+  `}
 `;
 export const DataInput = styled(TextInput)`
     height: 48px;

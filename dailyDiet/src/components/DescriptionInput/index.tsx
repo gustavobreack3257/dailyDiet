@@ -1,9 +1,9 @@
 import * as S from './styles'
 
-export function Input(){
+export function DescriptionInput(){
     return(
         <S.Container>
-            <S.DataInput/>
+            <S.DataInput />
         </S.Container>
     )
 }

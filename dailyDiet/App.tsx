@@ -2,6 +2,7 @@ import React from 'react'
 import { Home } from '@screens/Home'
 import { Details } from '@screens/Details'
 import { MealAdd } from '@screens/MealAdd'
+import { MealFeedback } from '@screens/MealFeedback'
 
 import {
   useFonts,
@@ -18,7 +19,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={Theme}>
-      {fontsLoaded ? <MealAdd />: []}
+      {fontsLoaded ? <MealFeedback />: []}
 
       <StatusBar barStyle={'dark-content'}
       translucent

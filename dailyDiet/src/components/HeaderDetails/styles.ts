@@ -1,48 +1,47 @@
 import { ArrowLeft } from "phosphor-react-native";
+import { TouchableOpacity } from "react-native";
 import styled, { css } from "styled-components/native";
 
 export const Container = styled.View`
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-
-  height: 200px;
-  width: 100%;
-
-  background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
-`;
-export const ContainerIcon = styled.View`
-  margin-left: 24px;
-  margin-right: 40px;
-  padding-top: 56px;
-
-  height: 100%;
-  width: 32px;
-`;
-export const ContainerTitle = styled.View`
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  height: 48px;
-  width: 60%;
+  height: 168px;
+  width: 100%;
+  padding: 0px 24px;
+
+  background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
+`;
+export const ContainerIcon = styled(TouchableOpacity)`
+  padding-top: 56px;
+
+  height: 100%;
+`;
+export const ContainerTitle = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 40px;
+
 `;
 
 export const Title = styled.Text`
   ${({ theme }) => css`
-    font-size: ${theme.FONT_SIZE.BG}px;
+    font-size: ${theme.FONT_SIZE.EG}px;
     font-family: ${theme.FONT_FAMILY.BOLD};
     color: ${theme.COLORS.GRAY_100};
   `}
 `;
 export const SubTitle = styled.Text`
   ${({ theme }) => css`
-    font-size: ${theme.FONT_SIZE.MD}px;
+    font-size: ${theme.FONT_SIZE.SM}px;
     font-family: ${theme.FONT_FAMILY.REGULAR};
-    color: ${theme.COLORS.GRAY_100};
+    color: ${theme.COLORS.GRAY_200};
   `}
 `;
 export const Icon = styled(ArrowLeft).attrs(({ theme }) => ({
-  size: theme.FONT_SIZE.EG,
+  size: theme.FONT_SIZE.XL,
   color: theme.COLORS.GREEN_DARK,
 }))``;

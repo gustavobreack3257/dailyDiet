@@ -1,8 +1,14 @@
 import { Button } from "@components/Button";
 import * as S from "./styles";
 import PositiveSvg from "@assets/PositiveIllustration.svg";
+import { useNavigation } from "@react-navigation/native";
 
-export function MealFeedback() {
+export function EditMeal() {
+  const navigation = useNavigation();
+
+  function handleReturnHome(){
+    navigation.navigate('home')
+  }
   return (
     <S.Container>
       <S.ContainerTitle>
@@ -19,7 +25,7 @@ export function MealFeedback() {
       </S.ContainerImage>
 
       <S.ContainerButton>
-        <Button/>
+        <Button title="ir para pagina inicial" onPress={handleReturnHome}/>
       </S.ContainerButton>
     </S.Container>
   );

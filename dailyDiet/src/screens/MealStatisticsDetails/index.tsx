@@ -3,10 +3,17 @@ import * as S from "./styles";
 import { StatBox } from "@components/StatBox";
 import { HeaderDetails } from "@components/HeaderDetails";
 import { StatisticResult } from "@components/StatisticResult";
-export function Details() {
+import { useNavigation } from "@react-navigation/native";
+
+export function MealStatisticsDetails() {
+  const navigation = useNavigation();
+
+  function handleGoBack(){
+    navigation.goBack();
+  }
   return (
     <S.Container>
-      <HeaderDetails />
+      <HeaderDetails title="90.33%" onPress={handleGoBack}/>
 
       <S.ContainerBody>
         <S.Describe>Estatísticas gerais</S.Describe>
@@ -20,9 +27,9 @@ export function Details() {
           <StatBox title="109" subTitle="refeições registradas" />
 
           <S.ContainerStatistic>
-            <StatisticResult title="99" subTitle="refeições dentro da dieta" />
+            <StatisticResult type="PRIMARY" title="99" subTitle="refeições dentro da dieta" />
 
-            <StatisticResult title="10" subTitle="refeições fora da dieta" />
+            <StatisticResult type="SECONDARY" title="10" subTitle="refeições fora da dieta" />
           </S.ContainerStatistic>
         </S.ContainerElements>
       </S.ContainerBody>

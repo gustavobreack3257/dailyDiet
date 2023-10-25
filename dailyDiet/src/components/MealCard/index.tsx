@@ -1,16 +1,16 @@
 import * as S from "./styles";
 import DividerSvg from "@assets/divider.svg";
 
-import { ViewProps } from "react-native";
+import { TouchableOpacityProps, ViewProps } from "react-native";
 import { CircleStatusTypeStyledProps } from "./styles";
 
-type props = ViewProps & {
+type props = ViewProps & TouchableOpacityProps &{
   title: string;
-  type?: CircleStatusTypeStyledProps;
+  type?: S.CircleStatusTypeStyledProps;
 };
-export function MealCard({ title, type = "PRIMARY", ...rest }: props) {
+export function MealCard({ title, ...rest }: props) {
   return (
-    <S.Container {...rest}>
+    <S.Container >
       <S.TimetableData>20:08</S.TimetableData>
 
       <S.ContainerDivider>
@@ -20,8 +20,8 @@ export function MealCard({ title, type = "PRIMARY", ...rest }: props) {
       <S.ContainerTitle>
         <S.Title>{title}</S.Title>
       </S.ContainerTitle>
-      <S.ContainerCircle>
-        <S.StatusCircle type={type} />
+      <S.ContainerCircle >
+        <S.StatusCircle {...rest}/>
       </S.ContainerCircle>
     </S.Container>
   );

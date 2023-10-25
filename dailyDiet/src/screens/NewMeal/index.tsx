@@ -1,15 +1,27 @@
 import * as S from "./styles";
-import { Header } from "@components/HeaderApplication";
+
+import { Header } from "@components/Header";
 import { Input } from "@components/Input";
 import { DescriptionInput } from "@components/DescriptionInput";
 import { InputData } from "@components/InputData";
 import { Title } from "@components/Title";
-import { SelectDiet } from "@components/SelectDiet";
+import { MealGroupFilterButton } from "@components/MealGroupFilterButton";
 import { Button } from "@components/Button";
-export function MealAdd() {
+
+import { useNavigation } from "@react-navigation/native";
+
+export function NewMeal() {
+  const navigation = useNavigation();
+
+  function handleGoBack(){
+    navigation.goBack();
+  }
+  function handleFeedBackMeal(){
+    navigation.navigate('feedBackMeal')
+  }
   return (
     <S.Container>
-      <Header title="Nova refeição" />
+      <Header title="Nova refeição" onPress={handleGoBack}/>
 
       <S.ContainerBody>
         <Title title="Name" />
@@ -27,11 +39,11 @@ export function MealAdd() {
         <Title title="Está dentro da dieta?"/>
 
         <S.ContainerSelectData>
-        <SelectDiet type="PRIMARY" title="Sim" />
-        <SelectDiet type="SECONDARY" title="Sim" />
+        <MealGroupFilterButton title="Sim" type='PRIMARY' isActive/>
+        <MealGroupFilterButton title="Não" type='SECONDARY' />
         </S.ContainerSelectData>
 
-        <Button />
+        <Button title="Cadastrar refeição" onPress={handleFeedBackMeal}/>
       </S.ContainerBody>
     </S.Container>
   );

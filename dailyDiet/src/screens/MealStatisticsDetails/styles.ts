@@ -19,7 +19,6 @@ export const ContainerBody = styled.View`
 
   width: 100%;
   padding-top: 32px;
-  margin-top: -8px;
 
   background-color: ${({ theme }) => theme.COLORS.GRAY_700};
 `;
@@ -37,7 +36,7 @@ export const ContainerStatistic = styled.View`
 export const Describe = styled.Text`
   ${({ theme }) => css`
     font-family: ${theme.FONT_FAMILY.BOLD};
-    font-size: ${theme.FONT_SIZE.MD}px;
+    font-size: ${theme.FONT_SIZE.SM}px;
     color: ${theme.COLORS.GRAY_100};
   `}
 `;

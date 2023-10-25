@@ -5,10 +5,11 @@ import { ArrowUpRight } from "phosphor-react-native";
 export const Container = styled.View`
   flex-direction: row;
   justify-content: center;
-  padding: 8px 8px;
+  align-items: center;
 
   width: 100%;
   height: 104px;
+  padding: 8px;
   margin-bottom: 40px;
   border-radius: 8px;
 
@@ -19,16 +20,18 @@ export const ContainerTitle = styled.View`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
 `;
 export const ContainerIcon = styled(TouchableOpacity)`
   width: 24px;
-  height: 24px;
+  height: 100%;
+
 `;
 
 export const Title = styled.Text`
   ${({ theme }) => css`
     font-family: ${theme.FONT_FAMILY.BOLD};
-    font-size: ${theme.FONT_SIZE.BG}px;
+    font-size: ${theme.FONT_SIZE.EG}px;
   `}
 `;
 export const SubTitle = styled.Text`

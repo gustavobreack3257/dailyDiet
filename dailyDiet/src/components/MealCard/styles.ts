@@ -13,9 +13,10 @@ export const Container = styled(TouchableOpacity)`
   align-items: center;
 
   width: 100%;
-  height: 48px;
+  height: 52px;
   border-radius: 8px;
   border-width: 1px;
+  margin-bottom: 8px;
 
   border-color: ${({ theme }) => theme.COLORS.GRAY_500};
 `;

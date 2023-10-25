@@ -24,7 +24,8 @@ export const ContainerInputData = styled.View`
 `;
 export const ContainerSelectData = styled.View`
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
+
 
   height: 72px;
   width: 100%;

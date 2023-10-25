@@ -1,7 +1,7 @@
 import { SafeAreaView, Text } from "react-native";
 import styled, { css } from "styled-components/native";
 
-export const Container = styled(SafeAreaView)`
+export const Container = styled.View`
   flex: 1;
   padding: 64px 24px;
 
@@ -11,6 +11,7 @@ export const SubTitle = styled.Text`
   ${({ theme }) => css`
     font-size: ${theme.FONT_SIZE.MD}px;
     font-family: ${theme.FONT_FAMILY.REGULAR};
+    color: ${theme.COLORS.GRAY_100};
   `}
   margin-bottom: 8px;
 `;
@@ -21,7 +22,7 @@ export const ContainerDataTitle = styled.View`
 export const DateTitle = styled.Text`
   ${({ theme }) => css`
     font-family: ${theme.FONT_FAMILY.BOLD};
-    font-size: ${theme.FONT_SIZE.XL}px;
+    font-size: ${theme.FONT_SIZE.LG}px;
     color: ${theme.COLORS.GRAY_100};
   `}
 `;

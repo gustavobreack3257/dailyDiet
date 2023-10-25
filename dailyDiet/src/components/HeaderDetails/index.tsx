@@ -1,13 +1,18 @@
+import { TouchableOpacityProps } from "react-native";
 import * as S from "./styles";
-export function HeaderDetails() {
+
+type Props = TouchableOpacityProps & {
+  title: string;
+};
+export function HeaderDetails({title, ...rest}:Props) {
   return (
     <S.Container>
-      <S.ContainerIcon>
+      <S.ContainerIcon {...rest}>
         <S.Icon />
       </S.ContainerIcon>
 
       <S.ContainerTitle>
-        <S.Title>90.33%</S.Title>
+        <S.Title>{title}</S.Title>
 
         <S.SubTitle>das refeições dentro da dieta</S.SubTitle>
       </S.ContainerTitle>

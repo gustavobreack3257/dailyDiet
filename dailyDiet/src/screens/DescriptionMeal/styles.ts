@@ -33,7 +33,6 @@ export const ContainerButton = styled.View`
   margin-top: 32px;
   padding: 0px 88px;
 
-  background-color: azure;
 `;
 export const SubTitleBold = styled.Text`
   ${({theme}) => css`

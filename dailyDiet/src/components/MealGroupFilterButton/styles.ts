@@ -20,7 +20,7 @@ export const Container = styled(TouchableOpacity)< & FilterTypeStylesProps>`
 
     border: ${({theme, isActive, type}) => isActive && type === 'PRIMARY' ? theme.COLORS.GREEN_DARK: isActive && type === 'SECONDARY' ? theme.COLORS.RED_DARK: theme.COLORS.GRAY_600};
 `;
-export const ContainerCircleFilterType = styled.View<FilterTypeStylesProps>`
+export const ContainerCircleFilterType = styled(View)<FilterTypeStylesProps>`
   height: 8px;
   width: 8px;
   border-radius: 16px;

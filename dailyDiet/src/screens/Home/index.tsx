@@ -21,8 +21,9 @@ export function Home() {
     <S.Container>
       <HomeHeader />
       <BoxDiet title="90%" onPress={handleDetails}/>
+
       <S.SubTitle>Refeições</S.SubTitle>
-      <Button title="Novas Refeições" onPress={handleNewMeal}/>
+      <Button title="Novas Refeições" buttonType="PRIMARY" titleType='PRIMARY' showIcon iconType="PRIMARY" onPress={handleNewMeal}/>
 
       <S.ContainerDataTitle>
         <S.DateTitle>12.08.2023</S.DateTitle>

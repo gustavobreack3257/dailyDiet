@@ -39,7 +39,7 @@ export function NewMeal() {
         <Title title="Está dentro da dieta?"/>
 
         <S.ContainerSelectData>
-        <MealGroupFilterButton title="Sim" type='PRIMARY' isActive/>
+        <MealGroupFilterButton title="Sim" type='PRIMARY' />
         <MealGroupFilterButton title="Não" type='SECONDARY' />
         </S.ContainerSelectData>
 

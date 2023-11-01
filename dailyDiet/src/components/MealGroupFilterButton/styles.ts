@@ -6,7 +6,7 @@ export type FilterTypeStylesProps = {
   type: 'PRIMARY' | 'SECONDARY';
   isActive?: boolean;
 }
-export const Container = styled(TouchableOpacity)< & FilterTypeStylesProps>`
+export const Container = styled(TouchableOpacity)<FilterTypeStylesProps>`
     flex-direction: row;
     justify-content: center;
     align-items: center;

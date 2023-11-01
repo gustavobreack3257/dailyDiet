@@ -2,15 +2,15 @@ import * as S from "./styles";
 import DividerSvg from "@assets/divider.svg";
 
 import { TouchableOpacityProps, ViewProps } from "react-native";
-import { CircleStatusTypeStyledProps } from "./styles";
+
 
 type props = ViewProps & TouchableOpacityProps &{
   title: string;
   type?: S.CircleStatusTypeStyledProps;
 };
-export function MealCard({ title, ...rest }: props) {
+export function MealCard({ title, type='POSITIVE',...rest }: props) {
   return (
-    <S.Container >
+    <S.Container {...rest}>
       <S.TimetableData>20:08</S.TimetableData>
 
       <S.ContainerDivider>
@@ -21,7 +21,7 @@ export function MealCard({ title, ...rest }: props) {
         <S.Title>{title}</S.Title>
       </S.ContainerTitle>
       <S.ContainerCircle >
-        <S.StatusCircle {...rest}/>
+        <S.StatusCircle type={type} {...rest}/>
       </S.ContainerCircle>
     </S.Container>
   );

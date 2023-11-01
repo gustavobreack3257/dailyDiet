@@ -6,9 +6,9 @@ type Props = ViewProps &{
   subTitle: string;
   type?: S.SelectTypeColorProps;
 };
-export function StatisticResult({ title, subTitle, ...rest}: Props) {
+export function StatisticResult({ title, subTitle, type='POSITIVE', ...rest}: Props) {
   return (
-    <S.Container {...rest} >
+    <S.Container type={type} {...rest} >
       <S.ContainerTitle>
         <S.Title>{title}</S.Title>
       </S.ContainerTitle>

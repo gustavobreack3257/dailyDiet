@@ -1,8 +1,12 @@
 import { TouchableOpacity } from "react-native";
 import styled, { css } from "styled-components/native";
 import { ArrowUpRight } from "phosphor-react-native";
+export type BoxDietColorStyleProps = 'POSITIVE' | 'NEGATIVE';
 
-export const Container = styled.View`
+type Props = {
+  typeColor: BoxDietColorStyleProps;
+}
+export const Container = styled.View<Props>`
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -13,7 +17,7 @@ export const Container = styled.View`
   margin-bottom: 40px;
   border-radius: 8px;
 
-  background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
+  background-color: ${({ theme, typeColor }) => typeColor === 'POSITIVE' ? theme.COLORS.GREEN_LIGHT: theme.COLORS.RED_LIGHT};
 `;
 export const ContainerTitle = styled.View`
   flex: 1;
@@ -40,7 +44,8 @@ export const SubTitle = styled.Text`
     font-size: ${theme.FONT_SIZE.SM}px;
   `}
 `;
-export const Icon = styled(ArrowUpRight).attrs(({ theme }) => ({
-  size: theme.FONT_SIZE.XL,
-  color: theme.COLORS.GREEN_DARK,
+export const Icon = styled(ArrowUpRight).attrs<Props>(({ theme, typeColor }) =>
+({
+  size: theme.FONT_SIZE.MD,
+  color: typeColor === 'POSITIVE' ? theme.COLORS.GREEN_DARK: theme.COLORS.RED_DARK
 }))``;

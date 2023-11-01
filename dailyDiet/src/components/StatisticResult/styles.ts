@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import styled, { css } from "styled-components/native";
 
-export type SelectTypeColorProps = 'PRIMARY' | 'SECONDARY';
+export type SelectTypeColorProps = 'POSITIVE' | 'NEGATIVE';
 
 type props = {
   type: SelectTypeColorProps;
@@ -15,7 +15,7 @@ export const Container = styled(View)<props>`
   width: 48%;
   border-radius: 8px;
 
-  background-color: ${({ theme, type }) => type === 'PRIMARY' ? theme.COLORS.GREEN_LIGHT: theme.COLORS.RED_LIGHT};
+  background-color: ${({ theme, type }) => type === 'POSITIVE' ? theme.COLORS.GREEN_LIGHT: theme.COLORS.RED_LIGHT};
 `;
 export const ContainerTitle = styled.View`
   margin-bottom: 8px;

@@ -2,7 +2,7 @@ import styled, { css } from "styled-components/native";
 import DividerSvg from "@assets/divider.svg";
 import { TextInput, TouchableOpacity, View } from "react-native";
 
-export type CircleStatusTypeStyledProps = "PRIMARY" | "SECONDARY";
+export type CircleStatusTypeStyledProps = "POSITIVE" | "NEGATIVE";
 
 type Props = {
   type: CircleStatusTypeStyledProps;
@@ -53,5 +53,5 @@ export const StatusCircle = styled(View)<Props>`
   width: 14px;
   border-radius: 16px;
   background-color: ${({ theme, type }) =>
-    type === "PRIMARY" ? theme.COLORS.GREEN_MID : theme.COLORS.RED_MID};
+    type === "POSITIVE" ? theme.COLORS.GREEN_MID : theme.COLORS.RED_MID};
 `;

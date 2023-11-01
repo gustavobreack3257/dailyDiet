@@ -1,58 +1,68 @@
 import styled, { css } from "styled-components/native";
 
-export const Container = styled.View`
+export type SelectColorTypeProps = 'PRIMARY' | 'SECONDARY' | null;
+
+type Props = {
+  type: SelectColorTypeProps;
+}
+export const Container = styled.View<Props>`
   flex: 1;
-  flex-direction: column;
+
+  background-color: ${({theme, type}) => type === 'PRIMARY' ? theme.COLORS.GREEN_LIGHT: type === 'SECONDARY' ? theme.COLORS.RED_LIGHT: theme.COLORS.GRAY_500};
+`;
+export const ContainerBody = styled.View`
+  height: 712px;
+  width: 100%;
+  padding: 40px 24px;
+  border-top-right-radius: 24px;
+  border-top-left-radius:24px;
 
   background-color: ${({theme}) => theme.COLORS.GRAY_700};
 `;
-export const ContainerTitle = styled.View`
-  flex-direction: column;
-  align-items: center;
-
-  height: 64px;
+export const ContainerElements = styled.View`
+  height: 208px;
   width: 100%;
-  margin-top: 136px;
+  margin-bottom: 85%;
+`;
+export const ContainerTextMeal = styled.View`
+  height: 76px;
+  width: 100%;
+  margin-bottom: 24px;
+
 
 `;
-export const ContainerImage = styled.View`
-  justify-content: center;
-  align-items: center;
-
-  height: 288px;
+export const ContainerDescriptionText = styled.View`
+  height: 48px;
   width: 100%;
-  margin-top: 40px;
-  margin-bottom: 32px;
-`;
-export const ContainerButton = styled.View`
-  justify-content: center;
-  align-items: center;
+  margin-bottom: 24px;
 
-  height: 56px;
-  width: 100%;
-  margin-top: 32px;
-  padding: 0px 88px;
 
 `;
-export const SubTitleBold = styled.Text`
-  ${({theme}) => css`
-    font-size: ${theme.FONT_SIZE.MD}px;
+export const Title = styled.Text`
+  ${({ theme }) => css`
+    font-size: ${theme.FONT_SIZE.YG}px;
     font-family: ${theme.FONT_FAMILY.BOLD};
     color: ${theme.COLORS.GRAY_100};
   `}
 `;
 export const SubTitle = styled.Text`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     font-size: ${theme.FONT_SIZE.MD}px;
     font-family: ${theme.FONT_FAMILY.REGULAR};
+    color: ${theme.COLORS.GRAY_200};
+  `}
+`;
+export const TitleDataAndHour = styled.Text`
+  ${({ theme }) => css`
+    font-size: ${theme.FONT_SIZE.MD}px;
+    font-family: ${theme.FONT_FAMILY.BOLD};
     color: ${theme.COLORS.GRAY_100};
   `}
 `;
-export const Title = styled.Text`
-  ${({theme}) => css`
-    font-size: ${theme.FONT_SIZE.XL}px;
-    font-family: ${theme.FONT_FAMILY.BOLD};
-    color: ${theme.COLORS.GREEN_DARK};
+export const SubTitleDataAndHour = styled.Text`
+  ${({ theme }) => css`
+    font-size: ${theme.FONT_SIZE.MD}px;
+    font-family: ${theme.FONT_FAMILY.REGULAR};
+    color: ${theme.COLORS.GRAY_200};
   `}
 `;
-

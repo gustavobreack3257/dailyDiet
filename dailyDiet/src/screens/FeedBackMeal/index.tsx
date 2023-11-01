@@ -1,27 +1,40 @@
 import { Button } from "@components/Button";
 import * as S from "./styles";
 import PositiveSvg from "@assets/PositiveIllustration.svg";
+import NegativeSvg from "@assets/NegativeIllustration.svg"
 import { useNavigation } from "@react-navigation/native";
-
-export function FeedBackMeal() {
+import { TextProps } from "react-native";
+import { GroupSelectionProps } from "./styles";
+type Props = {
+  type?: GroupSelectionProps;
+}
+export function FeedBackMeal({type = 'Positive'}: Props) {
   const navigation = useNavigation();
 
   function handleReturnHome(){
     navigation.navigate('home')
   }
   return (
-    <S.Container>
+    <S.Container >
       <S.ContainerTitle>
-        <S.Title>Continue assim!</S.Title>
+        {
+          type === 'Positive' ? <S.Title textColor="Positive">Continue assim</S.Title> : <S.Title textColor="Negative">Que pena!</S.Title>
+        }
 
-        <S.SubTitle>
-          Você continua<S.SubTitleBold> dentro da dieta.</S.SubTitleBold> Muito
-          bem!
+
+        {
+          type === 'Positive' ?  <S.SubTitle>Você continua<S.SubTitleBold> dentro da dieta.</S.SubTitleBold> Muito
+          bem! </S.SubTitle>:  <S.SubTitle> Você <S.SubTitleBold>saiu da dieta </S.SubTitleBold>desse vez, mais continue se esforçando e não desista!
         </S.SubTitle>
+
+        }
       </S.ContainerTitle>
 
       <S.ContainerImage>
-        <PositiveSvg />
+        {
+          type === 'Positive' ? <PositiveSvg/> : <NegativeSvg/>
+        }
+
       </S.ContainerImage>
 
       <S.ContainerButton>

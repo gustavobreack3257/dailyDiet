@@ -17,10 +17,13 @@ export function Home() {
   function handleNewMeal(){
     navigation.navigate('newMeal')
   }
+  function handleDescriptionMeal(){
+    navigation.navigate('descriptionMeal')
+  }
   return (
     <S.Container>
       <HomeHeader />
-      <BoxDiet title="90%" onPress={handleDetails}/>
+      <BoxDiet title="90%" typeColor="POSITIVE" onPress={handleDetails}/>
 
       <S.SubTitle>Refeições</S.SubTitle>
       <Button title="Novas Refeições" buttonType="PRIMARY" titleType='PRIMARY' showIcon iconType="PRIMARY" onPress={handleNewMeal}/>
@@ -29,8 +32,9 @@ export function Home() {
         <S.DateTitle>12.08.2023</S.DateTitle>
       </S.ContainerDataTitle>
 
-      <MealCard title="X-Tudo" type="SECONDARY"/>
-      <MealCard title="Salada cesar com frango..." type="PRIMARY"/>
+      <MealCard onPress={handleDescriptionMeal} title="X-Tudo" type="NEGATIVE"/>
+
+      <MealCard title="Salada cesar com frango..." type="POSITIVE"/>
     </S.Container>
   );
 }

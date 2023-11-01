@@ -12,8 +12,8 @@ export function MealStatisticsDetails() {
     navigation.goBack();
   }
   return (
-    <S.Container>
-      <HeaderDetails title="90.33%" onPress={handleGoBack}/>
+    <S.Container type="POSITIVE">
+      <HeaderDetails title="90.33%" type="POSITIVE" onPress={handleGoBack}/>
 
       <S.ContainerBody>
         <S.Describe>Estatísticas gerais</S.Describe>
@@ -27,9 +27,9 @@ export function MealStatisticsDetails() {
           <StatBox title="109" subTitle="refeições registradas" />
 
           <S.ContainerStatistic>
-            <StatisticResult type="PRIMARY" title="99" subTitle="refeições dentro da dieta" />
+            <StatisticResult type="POSITIVE" title="99" subTitle="refeições dentro da dieta" />
 
-            <StatisticResult type="SECONDARY" title="10" subTitle="refeições fora da dieta" />
+            <StatisticResult type="NEGATIVE" title="10" subTitle="refeições fora da dieta" />
           </S.ContainerStatistic>
         </S.ContainerElements>
       </S.ContainerBody>

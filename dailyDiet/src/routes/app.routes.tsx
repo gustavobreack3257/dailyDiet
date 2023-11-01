@@ -20,7 +20,7 @@ export function AppRoute() {
 
       <Screen name="newMeal" component={NewMeal} />
 
-      <Screen name="DescriptionMeal" component={DescriptionMeal} />
+      <Screen name="descriptionMeal" component={DescriptionMeal} />
 
       <Screen name="editMeal" component={EditMeal} />
     </Navigator>

@@ -1,32 +1,51 @@
-import { Button } from "@components/Button";
 import * as S from "./styles";
-import PositiveSvg from "@assets/PositiveIllustration.svg";
 import { useNavigation } from "@react-navigation/native";
 
-export function DescriptionMeal() {
+import { Header } from "@components/Header";
+import { StatusDiet } from "@components/StatusDiet";
+import { Button } from "@components/Button";
+
+type Props = {
+  type?: S.SelectColorTypeProps;
+};
+export function DescriptionMeal({ type = null }: Props) {
   const navigation = useNavigation();
 
-  function handleReturnHome(){
-    navigation.navigate('home')
+  function handleToReturnHome() {
+    navigation.navigate("home");
+  }
+  function handleToEditMeal() {
+    navigation.navigate("editMeal");
   }
   return (
-    <S.Container>
-      <S.ContainerTitle>
-        <S.Title>Continue assim!</S.Title>
+    <S.Container type={type}>
+      <Header onPress={handleToReturnHome} title="Refeições" />
+      <S.ContainerBody>
+        <S.ContainerElements>
+          <S.ContainerTextMeal>
+            <S.Title>Sanduíche</S.Title>
+            <S.SubTitle>
+              Sanduíche de pão integral com atum e salada de alface e tomate
+            </S.SubTitle>
+          </S.ContainerTextMeal>
 
-        <S.SubTitle>
-          Você continua<S.SubTitleBold> dentro da dieta.</S.SubTitleBold> Muito
-          bem!
-        </S.SubTitle>
-      </S.ContainerTitle>
+          <S.ContainerDescriptionText>
+            <S.TitleDataAndHour>Data e hora</S.TitleDataAndHour>
+            <S.SubTitleDataAndHour>12/08/2022 às 16:00</S.SubTitleDataAndHour>
+          </S.ContainerDescriptionText>
 
-      <S.ContainerImage>
-        <PositiveSvg />
-      </S.ContainerImage>
+          <StatusDiet title="dentro da dieta" />
+        </S.ContainerElements>
 
-      <S.ContainerButton>
-        <Button title="ir para pagina inicial" onPress={handleReturnHome}/>
-      </S.ContainerButton>
+        <Button showIcon iconType="SECONDARY" title="Editar refeição" onPress={handleToEditMeal} />
+        <Button
+          buttonType="SECONDARY"
+          titleType="SECONDARY"
+          showIcon
+          iconType="TERTIARY"
+          title="Excluir refeição"
+        />
+      </S.ContainerBody>
     </S.Container>
   );
 }

@@ -2,7 +2,11 @@ import { ArrowLeft } from "phosphor-react-native";
 import { TouchableOpacity } from "react-native";
 import styled, { css } from "styled-components/native";
 
-export const Container = styled.View`
+export type ContainerColorStyleType = 'POSITIVE' | 'NEGATIVE'
+type ContainerColorStyleTypeProps = {
+  type: ContainerColorStyleType;
+}
+export const Container = styled.View<ContainerColorStyleTypeProps>`
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -11,7 +15,7 @@ export const Container = styled.View`
   width: 100%;
   padding: 0px 24px;
 
-  background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
+  background-color: ${({ theme, type }) => type === 'POSITIVE' ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
 `;
 export const ContainerIcon = styled(TouchableOpacity)`
   padding-top: 56px;

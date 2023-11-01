@@ -18,6 +18,7 @@ export const Container = styled(TouchableOpacity)<ButtonColorTypeStyleProps>`
 
   height: 48px;
   width: 100%;
+  margin-bottom: 8px;
   border-radius: 6px;
   border-width: 1px;
 
@@ -67,7 +68,7 @@ export const IconEdit = styled(PencilSimpleLine).attrs(({ theme }) => ({
   weight: "bold",
 }))``;
 export const IconDelete = styled(Trash).attrs(({ theme }) => ({
-  color: theme.COLORS.WHITE,
+  color: theme.COLORS.GRAY_100,
   size: theme.FONT_SIZE.MD,
   weight: "bold",
 }))``;

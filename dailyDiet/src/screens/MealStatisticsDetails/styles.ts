@@ -3,10 +3,14 @@ import { SafeAreaView } from "react-native";
 import { css } from "styled-components/native";
 import styled from "styled-components/native";
 
-export const Container = styled.View`
+export type ContainerColorStyleType = 'POSITIVE' | 'NEGATIVE'
+type ContainerColorStyleTypeProps = {
+  type: ContainerColorStyleType;
+}
+export const Container = styled.View<ContainerColorStyleTypeProps>`
   flex: 1;
 
-  background-color: ${({ theme }) => theme.COLORS.GREEN_MID};
+  background-color: ${({ theme, type }) => type === 'POSITIVE' ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
 `;
 export const ContainerBody = styled.View`
   flex: 1;

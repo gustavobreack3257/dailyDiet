@@ -14,13 +14,8 @@ export const ContainerBody = styled.View`
   background-color: ${({theme}) => theme.COLORS.GRAY_700};
 `;
 export const ContainerInputData = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-
-  height: 48px;
   width: 100%;
-  margin-top: 24px;
-  margin-bottom: 24px;
+
 `;
 export const ContainerSelectData = styled.View`
   flex-direction: row;

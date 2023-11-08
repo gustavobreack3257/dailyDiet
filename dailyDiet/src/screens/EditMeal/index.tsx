@@ -1,5 +1,7 @@
 import * as S from "./styles";
 
+import { FlatList } from "react-native";
+
 import { Header } from "@components/Header";
 import { Input } from "@components/Input";
 import { DescriptionInput } from "@components/DescriptionInput";
@@ -9,41 +11,51 @@ import { MealGroupFilterButton } from "@components/MealGroupFilterButton";
 import { Button } from "@components/Button";
 
 import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
 
 export function EditMeal() {
+  const [filter, setFilter] = useState(["Sim", "Não"]);
+  const [input, setInput] = useState(["Data", "Hora"]);
   const navigation = useNavigation();
 
-  function handleGoBack(){
+  function handleGoBack() {
     navigation.goBack();
   }
-  function handleFeedBackMeal(){
-    navigation.navigate('feedBackMeal')
+  function handleFeedBackMeal() {
+    navigation.navigate("feedBackMeal");
   }
   return (
     <S.Container>
-      <Header title="Editar refeição" onPress={handleGoBack}/>
+      <Header title="Nova refeição" onPress={handleGoBack} />
 
       <S.ContainerBody>
         <Title title="Name" />
-        <Input />
+        <Input placeholder="Digite seu nome completo" />
 
         <Title title="Descrição" />
         <DescriptionInput />
 
         <S.ContainerInputData>
-          <InputData title="Data"/>
-
-          <InputData title="Hora"/>
+        <FlatList
+          data={input}
+          keyExtractor={(item) => item}
+          renderItem={({ item }) => <InputData title={item}
+          />}
+          horizontal
+        />
         </S.ContainerInputData>
 
-        <Title title="Está dentro da dieta?"/>
+        <Title title="Está dentro da dieta?" />
 
-        <S.ContainerSelectData>
-        <MealGroupFilterButton title="Sim" type='PRIMARY' />
-        <MealGroupFilterButton title="Não" type='SECONDARY' />
-        </S.ContainerSelectData>
+        <FlatList
+          data={filter}
+          keyExtractor={(item) => item}
+          renderItem={({ item }) => <MealGroupFilterButton title={item}
+          />}
+          horizontal
+        />
 
-        <Button title="Salvar alterações" onPress={handleFeedBackMeal}/>
+        <Button title="Cadastrar refeição" onPress={handleFeedBackMeal} />
       </S.ContainerBody>
     </S.Container>
   );

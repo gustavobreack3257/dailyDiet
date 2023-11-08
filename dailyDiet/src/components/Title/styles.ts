@@ -2,9 +2,10 @@ import { Text, TextInput } from "react-native";
 import styled, { css } from "styled-components/native";
 
 export const Container = styled.View`
-    height: 24px;
-    width: 100%;
-    margin-top: 24px;
+  height: 24px;
+  width: 100%;
+  margin-top: 24px;
+  margin-bottom: 4px;
 `;
 export const Title = styled.Text`
   ${({ theme }) => css`

@@ -12,9 +12,9 @@ type Props = TouchableOpacityProps & FilterTypeStylesProps & ViewProps &
     title: string;
   };
 export function MealGroupFilterButton({title, type = 'PRIMARY', isActive = false, ...rest}: Props) {
-  const [onActive, setOnActive] = useState(isActive);
+
   return (
-    <Container type={type} onPress={() => setOnActive(prevState => !prevState)} isActive={onActive} {...rest}>
+    <Container type={type} isActive={isActive} {...rest}>
       <ContainerCircleFilterType type={type}></ContainerCircleFilterType>
       <Title>{title}</Title>
     </Container>

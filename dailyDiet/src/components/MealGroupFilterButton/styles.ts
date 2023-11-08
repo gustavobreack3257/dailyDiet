@@ -3,7 +3,7 @@ import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import styled, { css } from "styled-components/native";
 
 export type FilterTypeStylesProps = {
-  type: 'PRIMARY' | 'SECONDARY';
+  type?: 'PRIMARY' | 'SECONDARY';
   isActive?: boolean;
 }
 export const Container = styled(TouchableOpacity)<FilterTypeStylesProps>`
@@ -18,7 +18,7 @@ export const Container = styled(TouchableOpacity)<FilterTypeStylesProps>`
 
     background-color: ${({theme, isActive, type}) => isActive && type === 'PRIMARY' ? theme.COLORS.GREEN_LIGHT: isActive && type === 'SECONDARY' ? theme.COLORS.RED_LIGHT: theme.COLORS.GRAY_600};
 
-    border: ${({theme, isActive, type}) => isActive && type === 'PRIMARY' ? theme.COLORS.GREEN_DARK: isActive && type === 'SECONDARY' ? theme.COLORS.RED_DARK: theme.COLORS.GRAY_600};
+    border: 1px solid ${({theme, isActive, type}) => isActive && type === 'PRIMARY' ? theme.COLORS.GREEN_DARK: isActive && type === 'SECONDARY' ? theme.COLORS.RED_DARK: theme.COLORS.GRAY_600};
 `;
 export const ContainerCircleFilterType = styled(View)<FilterTypeStylesProps>`
   height: 8px;

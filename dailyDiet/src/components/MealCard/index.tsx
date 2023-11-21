@@ -6,12 +6,13 @@ import { TouchableOpacityProps, ViewProps } from "react-native";
 
 type props = ViewProps & TouchableOpacityProps &{
   title: string;
+  hour: string;
   type?: S.CircleStatusTypeStyledProps;
 };
-export function MealCard({ title, type='POSITIVE',...rest }: props) {
+export function MealCard({ title, hour, type='POSITIVE',...rest }: props) {
   return (
     <S.Container {...rest}>
-      <S.TimetableData>20:08</S.TimetableData>
+      <S.TimetableData>{hour}</S.TimetableData>
 
       <S.ContainerDivider>
         <DividerSvg />

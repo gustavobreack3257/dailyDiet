@@ -15,7 +15,7 @@ export const Container = styled.View<ContainerColorStyleTypeProps>`
   width: 100%;
   padding: 0px 24px;
 
-  background-color: ${({ theme, type }) => type === 'POSITIVE' ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
+
 `;
 export const ContainerIcon = styled(TouchableOpacity)`
   padding-top: 56px;

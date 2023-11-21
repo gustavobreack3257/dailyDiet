@@ -1,9 +1,13 @@
 import * as S from "./styles";
 
-import { useNavigation } from "@react-navigation/native";
+import {
+  useFocusEffect,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
 
 import { FlatList } from "react-native";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import { HomeHeader } from "@components/HomeHeader";
 import { BoxDiet } from "@components/BoxDiet";
@@ -12,41 +16,63 @@ import { MealCard } from "@components/MealCard";
 import { ListEmpty } from "@components/ListEmpty";
 
 export function Home() {
-  const [mealGroups, setMealGroups] = useState<string[]>(['X-tudo', 'Salada cesar com frango'])
+  const [Groups, setGroups] = useState<string[]>([])
+  const [mealGroups, setMealGroups] = useState<string[]>([
+    "X-tudo",
+    "Salada cesar com frango",
+    "X-bacon",
+  ]);
+
   const navigation = useNavigation();
 
-  function handleDetails(){
-    navigation.navigate('mealStatisticsDetails')
+  function handleDetails() {
+    navigation.navigate("mealStatisticsDetails");
   }
 
-  function handleNewMeal(){
-    navigation.navigate('newMeal')
+  function handleDescriptionMeal() {
+    navigation.navigate("descriptionMeal");
   }
-  function handleDescriptionMeal(){
-    navigation.navigate('descriptionMeal')
+
+  async function handleNewMeal() {
+
+    navigation.navigate("newMeal");
   }
+
+
   return (
     <S.Container>
       <HomeHeader />
-      <BoxDiet title="90%" typeColor="POSITIVE" onPress={handleDetails}/>
+      <BoxDiet title="90%" typeColor="POSITIVE" onPress={handleDetails} />
 
       <S.SubTitle>Refeições</S.SubTitle>
-      <Button title="Novas Refeições" buttonType="PRIMARY" titleType='PRIMARY' showIcon iconType="PRIMARY" onPress={handleNewMeal}/>
+      <Button
+        title="Novas Refeições"
+        buttonType="PRIMARY"
+        titleType="PRIMARY"
+        showIcon
+        iconType="PRIMARY"
+        onPress={handleNewMeal}
+      />
 
       <S.ContainerDataTitle>
         <S.DateTitle>12.08.2023</S.DateTitle>
       </S.ContainerDataTitle>
 
       <FlatList
-      data={mealGroups}
-      keyExtractor={item => item}
-      renderItem={({item}) => (
-        <MealCard onPress={handleDescriptionMeal} title={item} />
-      )}
-      contentContainerStyle={mealGroups.length === 0 && {flex: 1}}
-      ListEmptyComponent={() => <ListEmpty message="Que tal adicionar uma refeição a sua dieta?"/>}
+        data={mealGroups}
+        keyExtractor={(item) => item}
+        renderItem={({ item }) => (
+          <MealCard onPress={handleDescriptionMeal} hour="20:00" title={item} />
+        )}
+        contentContainerStyle={[
+          { paddingBottom: 50 },
+          mealGroups.length === 0 && { flex: 1 },
+        ]}
+        showsVerticalScrollIndicator={false}
+        ListEmptyComponent={() => (
+          <ListEmpty message="Que tal adicionar uma refeição a sua dieta?" />
+        )}
       />
-
     </S.Container>
   );
 }

@@ -34,6 +34,7 @@ export const ContainerDivider = styled.View`
 `;
 export const ContainerTitle = styled.View`
   flex: 1;
+
   height: 24px;
 `;
 export const Title = styled.Text`

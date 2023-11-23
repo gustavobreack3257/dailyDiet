@@ -7,9 +7,9 @@ import { TouchableOpacityProps, ViewProps } from "react-native";
 type props = ViewProps & TouchableOpacityProps &{
   title: string;
   hour: string;
-  type?: S.CircleStatusTypeStyledProps;
+  circleStatusType?: S.CircleStatusTypeStyledProps;
 };
-export function MealCard({ title, hour, type='POSITIVE',...rest }: props) {
+export function MealCard({ title, hour, circleStatusType='POSITIVE',...rest }: props) {
   return (
     <S.Container {...rest}>
       <S.TimetableData>{hour}</S.TimetableData>
@@ -19,10 +19,10 @@ export function MealCard({ title, hour, type='POSITIVE',...rest }: props) {
       </S.ContainerDivider>
 
       <S.ContainerTitle>
-        <S.Title>{title}</S.Title>
+        <S.Title numberOfLines={1}>{title}</S.Title>
       </S.ContainerTitle>
       <S.ContainerCircle >
-        <S.StatusCircle type={type} {...rest}/>
+        <S.StatusCircle type={circleStatusType} {...rest}/>
       </S.ContainerCircle>
     </S.Container>
   );

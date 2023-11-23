@@ -9,10 +9,12 @@ import { mealGetAll } from "./mealGetAll";
 export async function addingNewMeal(newMeal: MealStorageDTO) {
   try {
     const storedMeals = await mealGetAll();
-    const MealAlreadyExits = storedMeals.filter(meal => meal.name === newMeal.name)
+    const MealAlreadyExits = storedMeals.filter(
+      (meal) => meal.name === newMeal.name
+    );
 
-    if(MealAlreadyExits.length > 0){
-      throw new AppError('Essa refeição ja existe')
+    if (MealAlreadyExits.length > 0) {
+      throw new AppError("Essa refeição ja existe");
     }
 
     const storage = JSON.stringify([...storedMeals, newMeal]);

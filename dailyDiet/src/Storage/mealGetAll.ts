@@ -10,6 +10,6 @@ export async function mealGetAll() {
 
     return meal;
   } catch (error) {
-    throw error
+    throw error;
   }
 }

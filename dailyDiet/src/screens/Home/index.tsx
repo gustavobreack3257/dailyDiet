@@ -6,6 +6,9 @@ import {
   useRoute,
 } from "@react-navigation/native";
 
+import { mealGetAll } from "../../Storage/mealGetAll";
+import { MealStorageDTO } from "../../Storage/MealStorageDTO";
+
 import { FlatList } from "react-native";
 import { useCallback, useState } from "react";
 
@@ -15,13 +18,10 @@ import { Button } from "@components/Button";
 import { MealCard } from "@components/MealCard";
 import { ListEmpty } from "@components/ListEmpty";
 
+
 export function Home() {
   const [Groups, setGroups] = useState<string[]>([])
-  const [mealGroups, setMealGroups] = useState<string[]>([
-    "X-tudo",
-    "Salada cesar com frango",
-    "X-bacon",
-  ]);
+  const [mealGroups, setMealGroups] = useState<MealStorageDTO[]>([]);
 
   const navigation = useNavigation();
 
@@ -29,8 +29,8 @@ export function Home() {
     navigation.navigate("mealStatisticsDetails");
   }
 
-  function handleDescriptionMeal() {
-    navigation.navigate("descriptionMeal");
+  function handleDescriptionMeal(name: string) {
+    navigation.navigate("descriptionMeal", {name});
   }
 
   async function handleNewMeal() {
@@ -38,7 +38,16 @@ export function Home() {
     navigation.navigate("newMeal");
   }
 
+  async function fetchMeals() {
+    const mealDiet = await mealGetAll()
 
+    setMealGroups(mealDiet)
+  }
+
+  useFocusEffect(useCallback(() => {
+    fetchMeals()
+
+  },[]))
   return (
     <S.Container>
       <HomeHeader />
@@ -60,9 +69,9 @@ export function Home() {
 
       <FlatList
         data={mealGroups}
-        keyExtractor={(item) => item}
+        keyExtractor={(item) => item.name}
         renderItem={({ item }) => (
-          <MealCard onPress={handleDescriptionMeal} hour="20:00" title={item} />
+          <MealCard onPress={() => handleDescriptionMeal(item.name)} hour="20:00" title={item.name} circleStatusType={item.dietGroup === 'Sim' ? 'POSITIVE': 'NEGATIVE'} />
         )}
         contentContainerStyle={[
           { paddingBottom: 50 },

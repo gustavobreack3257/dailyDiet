@@ -13,7 +13,7 @@ import { Button } from "@components/Button";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 
-import { addingNewMeal } from "../../Storage/AddingNewMeal";
+import { addingNewMeal } from "../../Storage/addingNewMeal";
 import { mealGetAll } from "../../Storage/mealGetAll";
 import { AppError } from "@utils/AppError";
 
@@ -46,8 +46,8 @@ export function NewMeal() {
         }
         await addingNewMeal(newMeal);
 
-        const meals = await mealGetAll();
-        console.log(meals);
+        navigation.navigate('feedBackMeal', {filterGroup})
+
       } catch (error) {
         if (error instanceof AppError) {
           Alert.alert("Nova refeição", error.message);

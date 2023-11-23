@@ -11,7 +11,7 @@ export const Container = styled.View`
 
   width: 100%;
   padding: 48px 24px;
-  background-color: ${({ theme }) => theme.COLORS.GRAY_500};
+
 `;
 export const ContainerTitle = styled.View`
   flex: 1;

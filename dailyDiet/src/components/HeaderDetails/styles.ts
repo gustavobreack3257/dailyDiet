@@ -3,10 +3,8 @@ import { TouchableOpacity } from "react-native";
 import styled, { css } from "styled-components/native";
 
 export type ContainerColorStyleType = 'POSITIVE' | 'NEGATIVE'
-type ContainerColorStyleTypeProps = {
-  type: ContainerColorStyleType;
-}
-export const Container = styled.View<ContainerColorStyleTypeProps>`
+
+export const Container = styled.View`
   flex-direction: row;
   justify-content: center;
   align-items: center;

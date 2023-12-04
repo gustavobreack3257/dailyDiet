@@ -1,16 +1,17 @@
+import { TextInputProps } from 'react-native';
 import * as S from './styles'
 
-type Props = {
+type Props = TextInputProps & {
     title: string;
 }
-export function InputData({title}: Props){
+export function InputData({title, ...rest}: Props){
     return(
         <S.Container>
             <S.Title>
                 {title}
             </S.Title>
 
-            <S.DataInput/>
+            <S.DataInput {...rest}/>
         </S.Container>
     )
 }

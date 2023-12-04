@@ -2,12 +2,11 @@ import { TouchableOpacityProps } from "react-native";
 import * as S from "./styles";
 
 type Props = TouchableOpacityProps & {
-  type?: S.ContainerColorStyleType;
   title: string;
 };
-export function HeaderDetails({title, type='POSITIVE', ...rest}:Props) {
+export function HeaderDetails({title, ...rest}:Props) {
   return (
-    <S.Container type={type}>
+    <S.Container >
       <S.ContainerIcon {...rest}>
         <S.Icon />
       </S.ContainerIcon>

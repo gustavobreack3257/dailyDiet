@@ -7,51 +7,82 @@ import {
 } from "@react-navigation/native";
 
 import { mealGetAll } from "../../Storage/mealGetAll";
-import { MealStorageDTO } from "../../Storage/MealStorageDTO";
+import { MealItemStorageDTO } from "../../Storage/MealStorageDTO";
 
-import { FlatList } from "react-native";
-import { useCallback, useState } from "react";
+import { Alert, FlatList } from "react-native";
+import { useCallback, useEffect, useState } from "react";
 
 import { HomeHeader } from "@components/HomeHeader";
 import { BoxDiet } from "@components/BoxDiet";
 import { Button } from "@components/Button";
 import { MealCard } from "@components/MealCard";
 import { ListEmpty } from "@components/ListEmpty";
-
+import { MealGroupCard } from "@components/MealGroupCard";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export function Home() {
-  const [Groups, setGroups] = useState<string[]>([])
-  const [mealGroups, setMealGroups] = useState<MealStorageDTO[]>([]);
+  const [percentage, setPercentage] = useState<string>('');
+  const [mealGroups, setMealGroups] = useState<MealItemStorageDTO[]>([]);
 
   const navigation = useNavigation();
 
   function handleDetails() {
-    navigation.navigate("mealStatisticsDetails");
+    navigation.navigate("mealStatisticsDetails", {percentage});
   }
 
-  function handleDescriptionMeal(name: string) {
-    navigation.navigate("descriptionMeal", {name});
+  function handleDescriptionMeal(id: string, date: string) {
+    navigation.navigate("descriptionMeal", { id, date });
+  }
+
+  async function totalPercentageOfMealsWithinTheDiet() {
+    try {
+      const fetchMeals = await mealGetAll();
+      const mealsFoundByDate = fetchMeals.filter((item) => item.date);
+
+      const mealsFoundByContent = mealsFoundByDate.map((item) =>
+        item.content.map((item) => item.dietGroup)
+      );
+
+      const unifiedArray = mealsFoundByContent.flat();
+      const totalMeals = unifiedArray.length;
+
+      const quantityOfYes = unifiedArray.filter((item) => item === "Sim");
+      const totalAmountOfYes = quantityOfYes.length;
+
+      const percentage = (totalAmountOfYes / totalMeals) * 100;
+
+      const roundedPercentage = JSON.stringify(Math.round(percentage * 10) / 10)
+      return setPercentage(roundedPercentage)
+    } catch (error) {
+      Alert.alert(
+        "Erro!",
+        "Não foi possível obter o resultado total das refeições, tente novamente mais tarde."
+      );
+    }
   }
 
   async function handleNewMeal() {
-
     navigation.navigate("newMeal");
   }
 
   async function fetchMeals() {
-    const mealDiet = await mealGetAll()
+    const mealDiet = await mealGetAll();
 
-    setMealGroups(mealDiet)
+    setMealGroups(mealDiet);
   }
 
-  useFocusEffect(useCallback(() => {
-    fetchMeals()
+  useFocusEffect(
+    useCallback(() => {
+      fetchMeals();
+      totalPercentageOfMealsWithinTheDiet();
+    }, [])
+  );
 
-  },[]))
+
   return (
     <S.Container>
       <HomeHeader />
-      <BoxDiet title="90%" typeColor="POSITIVE" onPress={handleDetails} />
+      <BoxDiet title={percentage + '%'} typeColor={ percentage >= '50' ? 'POSITIVE': 'NEGATIVE'} onPress={handleDetails} />
 
       <S.SubTitle>Refeições</S.SubTitle>
       <Button
@@ -63,15 +94,14 @@ export function Home() {
         onPress={handleNewMeal}
       />
 
-      <S.ContainerDataTitle>
-        <S.DateTitle>12.08.2023</S.DateTitle>
-      </S.ContainerDataTitle>
-
       <FlatList
         data={mealGroups}
-        keyExtractor={(item) => item.name}
+        keyExtractor={(item) => item.date}
         renderItem={({ item }) => (
-          <MealCard onPress={() => handleDescriptionMeal(item.name)} hour="20:00" title={item.name} circleStatusType={item.dietGroup === 'Sim' ? 'POSITIVE': 'NEGATIVE'} />
+          <MealGroupCard
+            onNavigateDetails={handleDescriptionMeal}
+            item={item}
+          />
         )}
         contentContainerStyle={[
           { paddingBottom: 50 },

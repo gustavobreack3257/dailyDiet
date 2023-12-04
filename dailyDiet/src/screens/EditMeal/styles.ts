@@ -14,6 +14,7 @@ export const ContainerBody = styled.View`
   background-color: ${({theme}) => theme.COLORS.GRAY_700};
 `;
 export const ContainerInputData = styled.View`
+  flex-direction: row;
   width: 100%;
 
 `;

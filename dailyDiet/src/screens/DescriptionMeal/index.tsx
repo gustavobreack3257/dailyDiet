@@ -1,7 +1,11 @@
 import * as S from "./styles";
-import { useFocusEffect, useNavigation, useRoute } from "@react-navigation/native";
+import {
+  useFocusEffect,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
 
-import { MealStorageDTO } from "../../Storage/MealStorageDTO";
+import { MealDTO } from "../../Storage/MealStorageDTO";
 import { mealGetAll } from "../../Storage/mealGetAll";
 import { removeMeal } from "../../Storage/removeMeal";
 
@@ -9,75 +13,95 @@ import { Header } from "@components/Header";
 import { StatusDiet } from "@components/StatusDiet";
 import { Button } from "@components/Button";
 
-import { useCallback, useState } from "react";
+import{CustomAlert} from '@components/Modal'
 
+import { useCallback, useState } from "react";
 
 type Props = {
   type?: S.SelectColorTypeProps;
 };
 
-type RouteParams ={
-  name: string
-}
+type RouteParams = {
+  id: string;
+  date: string;
+};
 export function DescriptionMeal({ type = null }: Props) {
   const navigation = useNavigation();
   const route = useRoute();
 
-  const [mealDetail, setMealDetail] = useState<MealStorageDTO>({} as MealStorageDTO)
-  const {name} = route.params as RouteParams;
+  const [mealDetail, setMealDetail] = useState<MealDTO>({} as MealDTO);
+  const { id, date } = route.params as RouteParams;
+  const [isDialogVisible, setDialogVisible] = useState(false);
 
-  console.log("Route", name);
+  const showDialog = () => setDialogVisible(true);
+  const hideDialog = () => setDialogVisible(false);
 
   function handleToReturnHome() {
     navigation.navigate("home");
   }
+
   function handleToEditMeal() {
-    navigation.navigate("editMeal");
+    navigation.navigate("editMeal", { id, date });
   }
 
   async function fetchMeal() {
-    const mealDiet = await mealGetAll()
-    const findMeal = mealDiet.find(meal => meal.name === name)
-    if(findMeal){
-      setMealDetail(findMeal)
+    const mealDiet = await mealGetAll();
+    const findMeal = mealDiet.find((meal) => meal.date === date);
+    if (findMeal) {
+      const meal = findMeal.content.find((item) => item.id === id);
+      if (meal) {
+        setMealDetail(meal);
+      }
     }
   }
 
-  async function handleMealRemove (mealName: string) {
+  async function handleMealRemove() {
     try {
-      await removeMeal(mealName)
-      fetchMeal()
+      await removeMeal(id, date);
+      fetchMeal();
 
-      navigation.navigate('home')
+      navigation.navigate("home");
     } catch (error) {
-
+      console.log("Remover refeição?", "Não foi possível remover a refeição");
     }
   }
 
-  useFocusEffect(useCallback(() => {
-    fetchMeal()
+  useFocusEffect(
+    useCallback(() => {
+      fetchMeal();
+    }, [])
+  );
 
-  },[]))
-  console.log('mealDetail', mealDetail)
 
   return (
-    <S.Container type={mealDetail.dietGroup === 'Sim' ? 'PRIMARY': 'SECONDARY'}>
+    <S.Container
+      type={mealDetail.dietGroup === "Sim" ? "PRIMARY" : "SECONDARY"}
+    >
       <Header onPress={handleToReturnHome} title="Refeições" />
       <S.ContainerBody>
         <S.ContainerElements>
           <S.ContainerTextMeal>
-            <S.Title>{name}</S.Title>
-            <S.SubTitle>
-              Sanduíche de pão integral com atum e salada de alface e tomate
-            </S.SubTitle>
+            <S.Title>{mealDetail.name}</S.Title>
+            <S.SubTitle>{mealDetail.description}</S.SubTitle>
           </S.ContainerTextMeal>
 
           <S.ContainerDescriptionText>
             <S.TitleDataAndHour>Data e hora</S.TitleDataAndHour>
-            <S.SubTitleDataAndHour>12/08/2022 às 16:00</S.SubTitleDataAndHour>
+            <S.SubTitleDataAndHour>
+              {date} às {mealDetail.hour}h
+            </S.SubTitleDataAndHour>
           </S.ContainerDescriptionText>
 
-          <StatusDiet statusCircleType={mealDetail.dietGroup === 'Sim' ? 'POSITIVE': 'NEGATIVE'} title="dentro da dieta" />
+          <StatusDiet
+            statusCircleType={
+              mealDetail.dietGroup === "Sim" ? "POSITIVE" : "NEGATIVE"
+            }
+            title={
+              mealDetail.dietGroup === "Sim"
+                ? "dentro da dieta"
+                : "fora da dieta"
+            }
+          />
         </S.ContainerElements>
 
         <Button
@@ -86,14 +110,17 @@ export function DescriptionMeal({ type = null }: Props) {
           title="Editar refeição"
           onPress={handleToEditMeal}
         />
+
         <Button
           buttonType="SECONDARY"
           titleType="SECONDARY"
           showIcon
           iconType="TERTIARY"
           title="Excluir refeição"
-          onPress={() => handleMealRemove(mealDetail.name)}
+          onPress={showDialog}
         />
+
+        <CustomAlert visible={isDialogVisible} onClose={hideDialog} onRemove={handleMealRemove}/>
       </S.ContainerBody>
     </S.Container>
   );

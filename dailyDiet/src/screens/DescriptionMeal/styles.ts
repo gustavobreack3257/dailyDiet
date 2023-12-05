@@ -23,6 +23,8 @@ export const ContainerElements = styled.View`
   height: 208px;
   width: 100%;
   margin-bottom: 85%;
+
+
 `;
 export const ContainerTextMeal = styled.View`
   height: 76px;

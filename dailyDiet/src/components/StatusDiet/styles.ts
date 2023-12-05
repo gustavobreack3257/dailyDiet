@@ -11,7 +11,7 @@ type CircleTypeProps = {
 
 export const Container = styled.View`
   flex-direction: row;
-  justify-content: space-between;
+
   align-items: center;
 
   height: 32px;
@@ -21,9 +21,10 @@ export const Container = styled.View`
   background-color: ${({ theme }) =>theme.COLORS.GRAY_600};
 `;
 export const ContainerStatusCircle = styled.View<CircleTypeProps>`
-
   height: 8px;
   width: 8px;
+
+  margin-right: 8px;
   border-radius: 8px;
 
   background-color: ${({ theme, type }) => type === 'POSITIVE' ? theme.COLORS.GREEN_DARK: theme.COLORS.RED_DARK};

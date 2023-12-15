@@ -1,3 +1,4 @@
+import { Platform } from "react-native";
 import styled, { css } from "styled-components/native";
 
 export type SelectColorTypeProps = 'PRIMARY' | 'SECONDARY' | null;
@@ -11,7 +12,7 @@ export const Container = styled.View<Props>`
   background-color: ${({theme, type}) => type === 'PRIMARY' ? theme.COLORS.GREEN_LIGHT: type === 'SECONDARY' ? theme.COLORS.RED_LIGHT: theme.COLORS.GRAY_500};
 `;
 export const ContainerBody = styled.View`
-  height: 712px;
+  height:  ${Platform.OS === 'ios' ? 80 : 85}%;
   width: 100%;
   padding: 40px 24px;
   border-top-right-radius: 24px;

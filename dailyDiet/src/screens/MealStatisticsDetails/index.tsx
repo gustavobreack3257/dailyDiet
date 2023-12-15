@@ -102,8 +102,8 @@ export function MealStatisticsDetails() {
   }, []);
 
   return (
-    <S.Container type={percentage >= "50" ? "POSITIVE" : "NEGATIVE"}>
-      <HeaderDetails title={percentage + "%"} onPress={handleGoBack} />
+    <S.Container type={Number(percentage) >= 50 ? "POSITIVE" : "NEGATIVE"}>
+      <HeaderDetails type={Number(percentage) >= 50 ? "POSITIVE" : "NEGATIVE"} title={percentage + "%"} onPress={handleGoBack} />
 
       <S.ContainerBody>
         <S.Describe>Estatísticas gerais</S.Describe>

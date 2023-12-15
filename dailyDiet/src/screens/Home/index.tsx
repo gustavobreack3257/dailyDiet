@@ -77,12 +77,12 @@ export function Home() {
       totalPercentageOfMealsWithinTheDiet();
     }, [])
   );
-
+    console.log('porcentagem', typeof percentage)
 
   return (
     <S.Container>
       <HomeHeader />
-      <BoxDiet title={percentage + '%'} typeColor={ percentage >= '50' ? 'POSITIVE': 'NEGATIVE'} onPress={handleDetails} />
+      <BoxDiet title={percentage + '%'} typeColor={ Number(percentage) >= 50 ? 'POSITIVE': 'NEGATIVE'} onPress={handleDetails} />
 
       <S.SubTitle>Refeições</S.SubTitle>
       <Button

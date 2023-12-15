@@ -2,7 +2,11 @@ import { ArrowLeft } from "phosphor-react-native";
 import { TouchableOpacity } from "react-native";
 import styled, { css } from "styled-components/native";
 
-export type ContainerColorStyleType = 'POSITIVE' | 'NEGATIVE'
+export type IconColorStyleType = 'POSITIVE' | 'NEGATIVE'
+
+type IconColorType = {
+  iconColor: IconColorStyleType;
+}
 
 export const Container = styled.View`
   flex-direction: row;
@@ -12,7 +16,6 @@ export const Container = styled.View`
   height: 168px;
   width: 100%;
   padding: 0px 24px;
-
 
 `;
 export const ContainerIcon = styled(TouchableOpacity)`
@@ -43,7 +46,7 @@ export const SubTitle = styled.Text`
     color: ${theme.COLORS.GRAY_200};
   `}
 `;
-export const Icon = styled(ArrowLeft).attrs(({ theme }) => ({
+export const Icon = styled(ArrowLeft).attrs<IconColorType>(({ theme, iconColor }) => ({
   size: theme.FONT_SIZE.XL,
-  color: theme.COLORS.GREEN_DARK,
+  color: iconColor === 'POSITIVE' ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK
 }))``;

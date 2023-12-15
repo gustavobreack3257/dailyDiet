@@ -124,7 +124,7 @@ export function NewMeal() {
     }, [])
   );
 
-  console.log(newMealId);
+
 
   return (
     <S.Container>

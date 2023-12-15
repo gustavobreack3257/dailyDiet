@@ -31,6 +31,7 @@ export const DataInput = styled(TextInput)`
     justify-content: flex-start;
     align-items: flex-start;
 
+
     height: 120px;
     width: 100%;
     padding: 16px;

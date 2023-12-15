@@ -3,10 +3,10 @@ import { SafeAreaView, TouchableOpacity } from "react-native";
 
 import styled, { css } from "styled-components/native";
 
-export type statusCircleTypeProps = 'POSITIVE' | 'NEGATIVE';
+export type StatusCircleTypeProps = 'POSITIVE' | 'NEGATIVE';
 
 type CircleTypeProps = {
-  type: statusCircleTypeProps;
+  type: StatusCircleTypeProps;
 }
 
 export const Container = styled.View`
@@ -17,7 +17,7 @@ export const Container = styled.View`
   height: 32px;
   width: 144px;
   padding: 4px 16px;
-  border-radius: 100%;
+  border-radius: 8px;
   background-color: ${({ theme }) =>theme.COLORS.GRAY_600};
 `;
 export const ContainerStatusCircle = styled.View<CircleTypeProps>`

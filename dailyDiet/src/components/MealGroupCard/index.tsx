@@ -10,10 +10,10 @@ type MealGroupCardProps = {
 export function MealGroupCard({ item, onNavigateDetails }: MealGroupCardProps) {
   const { date, content } = item;
   return (
-    // .replaceAll("/", ".")
+    //
     <S.Container>
       <S.ContainerDataTitle>
-        <S.DateTitle>{date}</S.DateTitle>
+        <S.DateTitle>{date.replaceAll("/", ".")}</S.DateTitle>
       </S.ContainerDataTitle>
       {content.map((meal) => (
         <MealCard

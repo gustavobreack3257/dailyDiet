@@ -1,31 +1,26 @@
 import { ArrowLeft } from "phosphor-react-native";
-import { SafeAreaView, TouchableOpacity } from "react-native";
+import { SafeAreaView, TouchableOpacity, Platform } from "react-native";
 
 import styled, { css } from "styled-components/native";
 
 export const Container = styled.View`
   flex: 1;
   flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 
+  padding-top: ${Platform.OS === 'ios' ? 56 : 24}px;
   width: 100%;
-  padding: 48px 24px;
+
 
 `;
 export const ContainerTitle = styled.View`
-  flex: 1;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-
-  height: 40px;
-  margin-top: 32px;
-
-
+  height: 24px;
 `;
 export const ContainerIcon = styled(TouchableOpacity)`
-  margin-top: 32px;
+  height: 24px;
+
+  margin-right:  ${Platform.OS === 'ios' ? 120 : 104}px;
+  margin-left: 24px;
 `;
 export const Title = styled.Text`
   ${({ theme }) => css`

@@ -4,7 +4,7 @@ import { MealDTO, MealItemStorageDTO } from "./MealStorageDTO";
 import { MEALS_COLLECTION } from "./storageConfig";
 
 import _ from "lodash";
-import { SortDescending } from "phosphor-react-native";
+
 export async function mealGetAll() {
   try {
     const storage = await AsyncStorage.getItem(MEALS_COLLECTION);
@@ -12,11 +12,16 @@ export async function mealGetAll() {
     const meal: MealItemStorageDTO[] = storage ? JSON.parse(storage) : [];
 
 
-    const orderByDate = _.orderBy(meal, "date").sort()
+    const orderByDate = _.orderBy(meal, "date", "desc")
 
-    console.log(orderByDate);
+    const orderByHour = orderByDate.map(item => {
+      const sortedContent = _.orderBy(item.content , "hour", "desc");
+      return { date: item.date, content: sortedContent };
+    });
 
-    return orderByDate;
+
+
+    return orderByHour;
   } catch (error) {
     throw error;
   }

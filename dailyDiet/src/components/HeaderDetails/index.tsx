@@ -3,12 +3,13 @@ import * as S from "./styles";
 
 type Props = TouchableOpacityProps & {
   title: string;
+  type: S.IconColorStyleType
 };
-export function HeaderDetails({title, ...rest}:Props) {
+export function HeaderDetails({title, type = 'POSITIVE', ...rest}:Props) {
   return (
     <S.Container >
       <S.ContainerIcon {...rest}>
-        <S.Icon />
+        <S.Icon iconColor={type}/>
       </S.ContainerIcon>
 
       <S.ContainerTitle>

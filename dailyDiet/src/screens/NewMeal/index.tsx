@@ -13,7 +13,7 @@ import { Button } from "@components/Button";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { useCallback, useEffect, useState } from "react";
 
-import { addingNewMeal } from "../../Storage/addingNewMeal";
+import { addingNewMeal } from "../../Storage/AddingNewMeal";
 
 import { AppError } from "@utils/AppError";
 import { formatDateBr } from "@utils/Regex";

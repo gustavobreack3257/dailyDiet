@@ -17,9 +17,9 @@ import {
   useNavigation,
   useRoute,
 } from "@react-navigation/native";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
-import { addingNewMeal } from "../../Storage/addingNewMeal";
+
 import { mealGetAll } from "../../Storage/mealGetAll";
 
 import { editStoredMeals } from "../../Storage/editStoredMeals";
